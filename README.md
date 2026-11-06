@@ -1,3 +1,24 @@
+# Support Operations Analytics (Healthcare)
+
+A portfolio project covering the core weekly work of a Customer Success or Support Operations analyst at a healthcare technology company:
+
+- What are customers contacting support about, and is the AI classifying it correctly?
+- Are we meeting response and resolution targets, and where is the backlog building?
+- How many agents will we need next quarter if volume grows as forecast?
+- Which customers show early warning signs of disengagement?
+
+| Workstream | Focus | Data | Status |
+|---|---|---|---|
+| 1 | LLM ticket classification, validated against ground truth | Bitext customer support dataset | Planned |
+| 2 | SLA, backlog and resolution KPIs in SQL (Snowflake + dbt) | NYC 311 service requests | Planned |
+| 3 | Volume forecast (SARIMA) and staffing scenarios | NYC 311 service requests | Planned |
+| 4 | Explainable customer health score | Simulated healthcare accounts | **Complete** |
+
+Each workstream uses the dataset best suited to its question. The datasets describe different populations and are never joined.
+
+**Workstream 4 headline:** 88% of red-flagged accounts were truly deteriorating (vs a 27% base rate), holding at 80% on an unseen test date. The score did not predict near-term churn, and the write-up below explains why.
+
+---
 ## Workstream 4: Customer health score
 
 **Question:** Which customer accounts show early warning signs of disengagement, and can a simple, explainable score find them?
