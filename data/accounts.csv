@@ -1,0 +1,401 @@
+account_id,account_name,segment,region,product_tier,seats,contract_start_date,annual_contract_value
+ACC-1001,Pinecrest Diagnostic Imaging,Imaging center,Midwest,Standard,5,2026-04-30,8400
+ACC-1002,Hillcrest Community Hospital,Community hospital,West,Enterprise,60,2025-07-15,100800
+ACC-1003,Coastal Cardiology Associates,Cardiology practice,Mountain,Standard,4,2025-07-30,5000
+ACC-1004,Highland Radiology Partners,Imaging center,Southwest,Professional,11,2025-04-17,14200
+ACC-1005,Mercy Health System,Hospital system,Southwest,Enterprise,41,2025-03-10,81500
+ACC-1006,Cedar Heart & Vascular,Cardiology practice,Southwest,Professional,6,2026-05-16,8900
+ACC-1007,Clearwater Diagnostic Imaging,Imaging center,Southeast,Standard,26,2025-03-22,41900
+ACC-1008,Redwood Diagnostic Imaging,Imaging center,West,Professional,18,2025-11-26,24500
+ACC-1009,Pinecrest Health System,Hospital system,Northeast,Professional,43,2026-02-20,80100
+ACC-1010,Mercy Community Hospital,Community hospital,Southeast,Standard,17,2025-11-29,23900
+ACC-1011,Summit Regional Medical Center,Community hospital,Mountain,Professional,50,2022-07-18,81700
+ACC-1012,Sierra Heart & Vascular,Cardiology practice,Mountain,Standard,11,2025-12-26,16300
+ACC-1013,Coastal Diagnostic Imaging,Imaging center,Southeast,Standard,11,2022-08-28,16400
+ACC-1014,Riverside Heart & Vascular,Cardiology practice,Mountain,Standard,8,2022-08-21,11000
+ACC-1015,Prairie Regional Medical Center,Community hospital,Southwest,Professional,51,2023-07-12,83800
+ACC-1016,Prairie Health System,Hospital system,Midwest,Professional,85,2024-06-26,140400
+ACC-1017,Redwood Diagnostic Imaging Northeast,Imaging center,Northeast,Professional,7,2025-12-28,9900
+ACC-1018,Westbrook Health Network,Hospital system,Northeast,Professional,91,2023-10-09,164400
+ACC-1019,Clearwater Heart Clinic,Cardiology practice,Southwest,Standard,7,2025-08-12,9900
+ACC-1020,Westbrook Imaging,Imaging center,West,Standard,11,2025-10-12,14400
+ACC-1021,Highland Radiology Partners Southeast,Imaging center,Midwest,Standard,8,2025-03-06,11300
+ACC-1022,St. Luke's Memorial Hospital,Community hospital,Southeast,Enterprise,22,2024-02-03,33900
+ACC-1023,Riverside Heart & Vascular Northeast,Cardiology practice,Midwest,Enterprise,12,2023-11-21,19300
+ACC-1024,Westbrook Cardiology Associates,Cardiology practice,Southeast,Professional,8,2024-06-13,11700
+ACC-1025,Lakeshore Imaging,Imaging center,Northeast,Standard,15,2023-03-08,20200
+ACC-1026,Clearwater Medical Group,Hospital system,Southeast,Enterprise,128,2022-07-09,205600
+ACC-1027,Granite Regional Medical Center,Community hospital,West,Professional,60,2024-05-26,94100
+ACC-1028,Oakwood Medical Group,Hospital system,Southwest,Enterprise,141,2024-11-27,233500
+ACC-1029,Bayview Health System,Hospital system,Northeast,Professional,49,2022-07-02,77200
+ACC-1030,Cedar Radiology Partners,Imaging center,Midwest,Professional,11,2022-12-07,17800
+ACC-1031,Prairie Imaging,Imaging center,Northeast,Standard,22,2023-03-21,36400
+ACC-1032,Oakwood Cardiology Associates,Cardiology practice,Midwest,Standard,7,2026-03-11,10100
+ACC-1033,Riverside Memorial Hospital,Community hospital,Midwest,Professional,56,2023-09-04,79000
+ACC-1034,Harbor Memorial Hospital,Community hospital,West,Standard,16,2022-09-21,23200
+ACC-1035,Cedar Community Hospital,Community hospital,Midwest,Standard,30,2026-02-13,49400
+ACC-1036,Mercy Health Network,Hospital system,Southeast,Professional,159,2025-09-30,296500
+ACC-1037,Highland Health Network,Hospital system,Southwest,Professional,247,2026-01-31,506400
+ACC-1038,Westbrook Regional Medical Center,Community hospital,Southeast,Professional,43,2022-11-13,69900
+ACC-1039,Canyon Health Network,Hospital system,Southwest,Standard,132,2025-08-05,254300
+ACC-1040,Fairview Diagnostic Imaging,Imaging center,Northeast,Standard,30,2024-05-07,44900
+ACC-1041,Highland Memorial Hospital,Community hospital,Southwest,Professional,50,2024-05-29,87000
+ACC-1042,Valley Heart & Vascular,Cardiology practice,Midwest,Professional,11,2025-12-31,13300
+ACC-1043,St. Luke's Diagnostic Imaging,Imaging center,West,Professional,26,2024-04-14,41500
+ACC-1044,Westbrook Community Hospital,Community hospital,Midwest,Enterprise,45,2026-04-12,66300
+ACC-1045,Valley Cardiology Associates,Cardiology practice,West,Standard,3,2025-11-24,4400
+ACC-1046,Mercy Heart Clinic,Cardiology practice,Mountain,Professional,9,2025-11-10,13900
+ACC-1047,Granite Regional Medical Center Southeast,Community hospital,Midwest,Professional,25,2022-11-27,37300
+ACC-1048,Redwood Medical Group,Hospital system,West,Standard,123,2023-05-27,235900
+ACC-1049,Westbrook Diagnostic Imaging,Imaging center,Northeast,Standard,16,2022-06-29,24500
+ACC-1050,Summit Medical Group,Hospital system,Northeast,Professional,68,2026-02-28,137600
+ACC-1051,Oakwood Health Network,Hospital system,Midwest,Standard,86,2024-12-14,132400
+ACC-1052,Pinecrest Health Network,Hospital system,Midwest,Professional,82,2022-10-30,167900
+ACC-1053,Fairview Diagnostic Imaging Northeast,Imaging center,Southwest,Standard,30,2024-05-07,42600
+ACC-1054,Silver Lake Imaging,Imaging center,Northeast,Standard,28,2025-12-22,39500
+ACC-1055,Highland Imaging,Imaging center,West,Professional,21,2024-10-30,29500
+ACC-1056,Redwood Imaging,Imaging center,Southwest,Standard,6,2026-03-19,10300
+ACC-1057,Prairie Memorial Hospital,Community hospital,Southwest,Professional,36,2026-02-07,52200
+ACC-1058,Redwood Imaging West,Imaging center,Southwest,Standard,9,2024-06-05,13200
+ACC-1059,Mercy Medical Group,Hospital system,West,Standard,69,2022-08-08,108000
+ACC-1060,Brookside Health Network,Hospital system,Mountain,Standard,91,2023-02-01,144700
+ACC-1061,Northgate Radiology Partners,Imaging center,Southwest,Standard,21,2025-03-01,30500
+ACC-1062,Bayview Regional Medical Center,Community hospital,West,Enterprise,28,2024-07-05,38100
+ACC-1063,Granite Imaging,Imaging center,Northeast,Standard,7,2023-12-10,11600
+ACC-1064,Granite Imaging Mountain,Imaging center,Southwest,Standard,25,2024-06-01,34400
+ACC-1065,Fairview Imaging,Imaging center,West,Standard,22,2025-12-07,35100
+ACC-1066,Riverside Diagnostic Imaging,Imaging center,West,Professional,9,2025-03-14,12200
+ACC-1067,Clearwater Imaging,Imaging center,Northeast,Standard,5,2023-04-29,7700
+ACC-1068,Prairie Memorial Hospital Southwest,Community hospital,Southwest,Professional,25,2024-07-15,36000
+ACC-1069,Westbrook Medical Group,Hospital system,Northeast,Enterprise,229,2022-11-25,425000
+ACC-1070,Silver Lake Memorial Hospital,Community hospital,Southeast,Standard,35,2023-03-31,61000
+ACC-1071,Prairie Health System Mountain,Hospital system,Mountain,Standard,63,2023-07-11,97400
+ACC-1072,Northgate Regional Medical Center,Community hospital,Southwest,Professional,48,2025-04-13,82300
+ACC-1073,Clearwater Heart & Vascular,Cardiology practice,Northeast,Standard,12,2025-08-18,15000
+ACC-1074,Meadowbrook Health System,Hospital system,Mountain,Enterprise,181,2024-11-04,278600
+ACC-1075,Redwood Medical Group Northeast,Hospital system,West,Enterprise,40,2023-09-02,72800
+ACC-1076,Summit Health Network,Hospital system,West,Professional,225,2023-04-13,380100
+ACC-1077,Hillcrest Medical Group,Hospital system,West,Professional,112,2022-12-15,224200
+ACC-1078,Clearwater Imaging Northeast,Imaging center,Southeast,Standard,11,2023-08-06,17600
+ACC-1079,Fairview Diagnostic Imaging Mountain,Imaging center,Southwest,Standard,22,2026-03-08,28200
+ACC-1080,Mercy Radiology Partners,Imaging center,Midwest,Standard,18,2024-02-12,30200
+ACC-1081,Harbor Imaging,Imaging center,Mountain,Enterprise,22,2023-05-24,30000
+ACC-1082,Silver Lake Memorial Hospital Southwest,Community hospital,Southwest,Professional,23,2022-09-26,41000
+ACC-1083,Coastal Cardiology Associates Midwest,Cardiology practice,Northeast,Professional,12,2025-12-18,17200
+ACC-1084,Sierra Health System,Hospital system,Southwest,Professional,205,2026-02-16,324700
+ACC-1085,Bayview Health Network,Hospital system,Southwest,Enterprise,40,2023-03-21,76700
+ACC-1086,Canyon Medical Group,Hospital system,Mountain,Professional,119,2023-07-21,219400
+ACC-1087,Harbor Imaging Northeast,Imaging center,Midwest,Standard,15,2025-12-14,21700
+ACC-1088,Harbor Memorial Hospital West,Community hospital,Southeast,Standard,31,2024-06-16,56400
+ACC-1089,Cedar Health System,Hospital system,Midwest,Enterprise,193,2025-08-02,316400
+ACC-1090,Brookside Community Hospital,Community hospital,Midwest,Standard,27,2025-03-04,37300
+ACC-1091,Oakwood Health System,Hospital system,Southwest,Professional,41,2022-08-09,68300
+ACC-1092,Riverside Imaging,Imaging center,Southwest,Professional,7,2025-10-08,12000
+ACC-1093,Brookside Regional Medical Center,Community hospital,Southwest,Standard,43,2022-08-15,69900
+ACC-1094,Sierra Community Hospital,Community hospital,Northeast,Professional,29,2026-03-03,41700
+ACC-1095,Cedar Regional Medical Center,Community hospital,Northeast,Professional,18,2025-08-22,27000
+ACC-1096,Highland Diagnostic Imaging,Imaging center,Southeast,Professional,24,2025-01-07,32800
+ACC-1097,Canyon Regional Medical Center,Community hospital,Midwest,Standard,42,2025-08-09,74200
+ACC-1098,Coastal Health System,Hospital system,Midwest,Standard,95,2025-02-28,181800
+ACC-1099,Highland Health Network Southwest,Hospital system,Northeast,Standard,68,2023-10-24,113000
+ACC-1100,Summit Heart & Vascular,Cardiology practice,Mountain,Professional,6,2026-05-07,8400
+ACC-1101,Sierra Cardiology Associates,Cardiology practice,Midwest,Standard,9,2022-12-26,11200
+ACC-1102,Canyon Imaging,Imaging center,Midwest,Standard,9,2025-12-07,12300
+ACC-1103,Summit Health System,Hospital system,West,Enterprise,156,2024-04-02,265800
+ACC-1104,Prairie Heart & Vascular,Cardiology practice,Northeast,Standard,14,2024-01-05,22500
+ACC-1105,Riverside Radiology Partners,Imaging center,Midwest,Standard,9,2025-10-31,15200
+ACC-1106,Lakeshore Diagnostic Imaging,Imaging center,Northeast,Professional,22,2025-03-11,35500
+ACC-1107,Coastal Memorial Hospital,Community hospital,Southwest,Professional,43,2024-09-25,71700
+ACC-1108,Mercy Health Network Southwest,Hospital system,West,Professional,199,2022-11-01,318300
+ACC-1109,Riverside Medical Group,Hospital system,Northeast,Enterprise,131,2023-07-15,251800
+ACC-1110,Meadowbrook Cardiology Associates,Cardiology practice,Northeast,Standard,7,2023-06-18,11100
+ACC-1111,Lakeshore Regional Medical Center,Community hospital,Northeast,Enterprise,39,2024-10-30,61500
+ACC-1112,Pinecrest Medical Group,Hospital system,Southwest,Professional,48,2025-09-30,90500
+ACC-1113,Pinecrest Regional Medical Center,Community hospital,Midwest,Professional,22,2022-08-21,35900
+ACC-1114,Riverside Radiology Partners Northeast,Imaging center,Mountain,Standard,15,2025-12-15,21400
+ACC-1115,Meadowbrook Health Network,Hospital system,West,Standard,176,2024-08-07,332700
+ACC-1116,Hillcrest Heart Clinic,Cardiology practice,Southeast,Standard,4,2023-06-13,6100
+ACC-1117,Canyon Radiology Partners,Imaging center,Southeast,Standard,10,2022-09-26,14000
+ACC-1118,Riverside Imaging Mountain,Imaging center,Southwest,Standard,24,2022-09-25,36500
+ACC-1119,Meadowbrook Memorial Hospital,Community hospital,Mountain,Standard,40,2022-08-15,60600
+ACC-1120,Meadowbrook Radiology Partners,Imaging center,Southeast,Standard,21,2024-01-31,30600
+ACC-1121,Highland Radiology Partners Northeast,Imaging center,Southwest,Professional,23,2024-10-31,32700
+ACC-1122,Redwood Radiology Partners,Imaging center,Southeast,Standard,27,2023-12-10,45500
+ACC-1123,Canyon Medical Group Mountain,Hospital system,Southwest,Professional,91,2026-04-05,176700
+ACC-1124,Valley Regional Medical Center,Community hospital,Mountain,Professional,50,2023-05-06,74900
+ACC-1125,Cedar Health Network,Hospital system,Northeast,Standard,104,2023-09-01,207400
+ACC-1126,Redwood Community Hospital,Community hospital,Midwest,Professional,52,2025-03-23,91700
+ACC-1127,Riverside Memorial Hospital Southeast,Community hospital,Midwest,Enterprise,25,2025-01-03,36300
+ACC-1128,Summit Health System Midwest,Hospital system,Southwest,Enterprise,239,2022-11-02,374700
+ACC-1129,Riverside Health Network,Hospital system,Mountain,Enterprise,238,2023-01-31,378500
+ACC-1130,Meadowbrook Radiology Partners Northeast,Imaging center,Mountain,Standard,22,2024-10-31,34800
+ACC-1131,Westbrook Health Network West,Hospital system,West,Professional,145,2026-05-24,278800
+ACC-1132,Riverside Heart Clinic,Cardiology practice,Midwest,Standard,4,2024-06-28,4800
+ACC-1133,Hillcrest Radiology Partners,Imaging center,Southwest,Professional,14,2025-10-25,20500
+ACC-1134,Harbor Community Hospital,Community hospital,Southeast,Professional,52,2026-02-21,93000
+ACC-1135,Riverside Diagnostic Imaging Southwest,Imaging center,West,Standard,11,2024-05-29,14400
+ACC-1136,St. Luke's Health System,Hospital system,West,Professional,147,2025-05-02,276700
+ACC-1137,Fairview Heart Clinic,Cardiology practice,West,Professional,3,2025-04-05,4600
+ACC-1138,Redwood Regional Medical Center,Community hospital,Northeast,Professional,40,2023-01-02,59300
+ACC-1139,Lakeshore Radiology Partners,Imaging center,Southeast,Standard,24,2023-10-20,34600
+ACC-1140,Bayview Health Network Mountain,Hospital system,West,Standard,126,2026-05-14,204800
+ACC-1141,Summit Community Hospital,Community hospital,Southwest,Enterprise,22,2022-12-28,36800
+ACC-1142,Summit Regional Medical Center Southwest,Community hospital,Southwest,Enterprise,21,2025-11-07,30500
+ACC-1143,Coastal Heart & Vascular,Cardiology practice,Mountain,Professional,14,2022-08-22,20000
+ACC-1144,Redwood Diagnostic Imaging Southeast,Imaging center,West,Standard,24,2025-12-01,37100
+ACC-1145,Oakwood Regional Medical Center,Community hospital,West,Professional,32,2024-08-05,52100
+ACC-1146,Summit Health Network Southeast,Hospital system,Midwest,Standard,214,2024-07-25,405600
+ACC-1147,Clearwater Community Hospital,Community hospital,Mountain,Enterprise,40,2025-04-23,66800
+ACC-1148,Summit Memorial Hospital,Community hospital,Southwest,Professional,50,2022-10-20,69400
+ACC-1149,Lakeshore Community Hospital,Community hospital,Mountain,Professional,58,2024-01-06,84800
+ACC-1150,Valley Health Network,Hospital system,West,Standard,228,2024-09-29,454800
+ACC-1151,Summit Heart & Vascular Midwest,Cardiology practice,Midwest,Standard,4,2024-04-22,5800
+ACC-1152,Harbor Heart & Vascular,Cardiology practice,Southwest,Standard,6,2025-07-11,7400
+ACC-1153,Valley Health Network Northeast,Hospital system,Southwest,Professional,50,2024-10-07,98600
+ACC-1154,Granite Imaging Southwest,Imaging center,Midwest,Standard,22,2024-09-26,37400
+ACC-1155,Redwood Medical Group Southeast,Hospital system,Southwest,Professional,58,2023-01-20,104200
+ACC-1156,Brookside Radiology Partners,Imaging center,Midwest,Standard,12,2024-04-02,17000
+ACC-1157,Bayview Health System Southwest,Hospital system,Northeast,Professional,67,2025-08-04,117300
+ACC-1158,Sierra Diagnostic Imaging,Imaging center,Southwest,Professional,14,2024-04-03,20300
+ACC-1159,Lakeshore Imaging Midwest,Imaging center,Midwest,Professional,25,2024-03-29,38100
+ACC-1160,Lakeshore Radiology Partners Midwest,Imaging center,West,Standard,14,2023-10-27,22400
+ACC-1161,Harbor Medical Group,Hospital system,Northeast,Professional,244,2024-09-21,482300
+ACC-1162,Brookside Heart Clinic,Cardiology practice,Southeast,Standard,6,2025-01-14,9500
+ACC-1163,Harbor Health System,Hospital system,Northeast,Standard,218,2022-09-15,413600
+ACC-1164,Silver Lake Health Network,Hospital system,Southeast,Enterprise,48,2024-05-19,86300
+ACC-1165,Oakwood Diagnostic Imaging,Imaging center,Southwest,Standard,10,2025-07-02,14400
+ACC-1166,Highland Regional Medical Center,Community hospital,West,Professional,55,2023-06-04,87900
+ACC-1167,Granite Heart & Vascular,Cardiology practice,Southwest,Professional,5,2026-05-15,7200
+ACC-1168,Brookside Heart Clinic Northeast,Cardiology practice,Northeast,Professional,5,2024-04-08,7100
+ACC-1169,Coastal Memorial Hospital Southeast,Community hospital,West,Professional,37,2023-08-10,52400
+ACC-1170,Highland Heart Clinic,Cardiology practice,Mountain,Standard,8,2025-07-23,12500
+ACC-1171,Mercy Medical Group Northeast,Hospital system,Southeast,Standard,53,2024-02-07,100200
+ACC-1172,Northgate Memorial Hospital,Community hospital,Southwest,Professional,20,2023-07-29,29300
+ACC-1173,Sierra Health System Northeast,Hospital system,Northeast,Standard,150,2024-10-18,262300
+ACC-1174,Bayview Heart Clinic,Cardiology practice,West,Professional,15,2025-09-19,23300
+ACC-1175,Coastal Health Network,Hospital system,Mountain,Standard,226,2024-02-11,467000
+ACC-1176,Oakwood Medical Group Northeast,Hospital system,Northeast,Standard,152,2025-07-14,236300
+ACC-1177,Lakeshore Memorial Hospital,Community hospital,West,Standard,56,2026-04-27,98600
+ACC-1178,Summit Heart Clinic,Cardiology practice,Southeast,Standard,15,2025-12-24,20700
+ACC-1179,Brookside Heart & Vascular,Cardiology practice,Mountain,Standard,8,2025-10-04,10500
+ACC-1180,Brookside Imaging,Imaging center,Northeast,Professional,10,2025-08-01,17100
+ACC-1181,Coastal Heart Clinic,Cardiology practice,West,Professional,13,2026-01-23,18400
+ACC-1182,Redwood Heart Clinic,Cardiology practice,Southeast,Professional,8,2026-04-23,11100
+ACC-1183,Highland Regional Medical Center Mountain,Community hospital,Southeast,Standard,37,2024-04-21,64200
+ACC-1184,Meadowbrook Regional Medical Center,Community hospital,Northeast,Standard,18,2026-04-02,25800
+ACC-1185,Bayview Imaging,Imaging center,Northeast,Standard,27,2022-07-23,46300
+ACC-1186,St. Luke's Imaging,Imaging center,West,Standard,29,2024-04-28,39500
+ACC-1187,Redwood Regional Medical Center Southwest,Community hospital,Northeast,Standard,21,2023-06-16,36600
+ACC-1188,Coastal Health Network Southwest,Hospital system,Midwest,Standard,222,2025-08-12,366700
+ACC-1189,Sierra Diagnostic Imaging Southwest,Imaging center,Southeast,Standard,15,2024-05-29,20400
+ACC-1190,Lakeshore Health System,Hospital system,Southeast,Professional,170,2023-06-23,326400
+ACC-1191,Silver Lake Heart & Vascular,Cardiology practice,Mountain,Standard,5,2026-03-09,7000
+ACC-1192,Granite Health System,Hospital system,West,Enterprise,152,2023-11-21,271800
+ACC-1193,Silver Lake Health Network Southwest,Hospital system,Southeast,Standard,142,2025-02-22,221200
+ACC-1194,Prairie Heart Clinic,Cardiology practice,Southwest,Standard,11,2023-12-05,13400
+ACC-1195,Clearwater Medical Group Northeast,Hospital system,Midwest,Professional,209,2026-04-25,416400
+ACC-1196,Coastal Health System Midwest,Hospital system,Southeast,Enterprise,202,2023-02-13,349500
+ACC-1197,Sierra Diagnostic Imaging Southeast,Imaging center,Southeast,Standard,20,2025-03-16,27400
+ACC-1198,Fairview Cardiology Associates,Cardiology practice,West,Professional,10,2024-12-17,15700
+ACC-1199,Fairview Health System,Hospital system,Southwest,Standard,197,2025-01-19,322400
+ACC-1200,Pinecrest Community Hospital,Community hospital,Mountain,Professional,33,2025-12-22,47700
+ACC-1201,Fairview Diagnostic Imaging Southeast,Imaging center,Mountain,Standard,23,2023-12-22,30600
+ACC-1202,Meadowbrook Cardiology Associates Southeast,Cardiology practice,Mountain,Standard,7,2023-04-30,10500
+ACC-1203,Valley Memorial Hospital,Community hospital,Southeast,Standard,50,2024-02-01,76700
+ACC-1204,Lakeshore Health Network,Hospital system,Southeast,Standard,78,2022-09-29,130800
+ACC-1205,Riverside Health System,Hospital system,Southwest,Professional,117,2024-02-01,227200
+ACC-1206,St. Luke's Medical Group,Hospital system,Northeast,Enterprise,89,2023-07-19,184200
+ACC-1207,Prairie Health Network,Hospital system,Midwest,Professional,139,2026-04-20,218800
+ACC-1208,Meadowbrook Imaging,Imaging center,Midwest,Standard,16,2024-01-01,24500
+ACC-1209,Redwood Health Network,Hospital system,Mountain,Standard,201,2022-12-14,399600
+ACC-1210,Westbrook Memorial Hospital,Community hospital,Southwest,Standard,51,2025-08-09,79200
+ACC-1211,Cedar Radiology Partners Northeast,Imaging center,Midwest,Standard,24,2025-11-20,33800
+ACC-1212,Summit Imaging,Imaging center,Southeast,Professional,10,2024-10-12,16500
+ACC-1213,Mercy Medical Group Southeast,Hospital system,Southwest,Enterprise,125,2024-10-15,252900
+ACC-1214,Westbrook Heart & Vascular,Cardiology practice,Southeast,Standard,6,2022-06-28,7800
+ACC-1215,Brookside Diagnostic Imaging,Imaging center,Southeast,Standard,13,2024-07-31,21100
+ACC-1216,Prairie Radiology Partners,Imaging center,Southwest,Standard,11,2023-03-27,14000
+ACC-1217,Redwood Health Network Southwest,Hospital system,Mountain,Professional,160,2024-09-27,314800
+ACC-1218,Valley Health System,Hospital system,Mountain,Professional,201,2025-11-08,328700
+ACC-1219,Redwood Cardiology Associates,Cardiology practice,Southwest,Professional,5,2023-03-24,7400
+ACC-1220,Brookside Community Hospital Midwest,Community hospital,Southwest,Standard,21,2024-08-23,35900
+ACC-1221,Fairview Memorial Hospital,Community hospital,Mountain,Standard,19,2025-01-21,30100
+ACC-1222,Cedar Community Hospital Mountain,Community hospital,Northeast,Enterprise,23,2026-03-20,34300
+ACC-1223,Riverside Imaging Southwest,Imaging center,Mountain,Professional,11,2022-09-08,16000
+ACC-1224,Mercy Heart & Vascular,Cardiology practice,West,Professional,6,2024-11-15,9500
+ACC-1225,Prairie Medical Group,Hospital system,Mountain,Standard,84,2025-07-24,167900
+ACC-1226,Pinecrest Heart & Vascular,Cardiology practice,West,Standard,10,2026-01-21,15800
+ACC-1227,Valley Medical Group,Hospital system,Southwest,Professional,204,2025-03-05,394200
+ACC-1228,Clearwater Imaging Southeast,Imaging center,West,Standard,6,2024-02-17,9000
+ACC-1229,Granite Diagnostic Imaging,Imaging center,Southwest,Professional,22,2023-09-05,30500
+ACC-1230,Westbrook Medical Group Mountain,Hospital system,Midwest,Standard,232,2023-05-28,475300
+ACC-1231,Silver Lake Health System,Hospital system,Northeast,Professional,207,2022-07-14,427000
+ACC-1232,Bayview Community Hospital,Community hospital,Southwest,Standard,36,2023-08-01,62600
+ACC-1233,Northgate Cardiology Associates,Cardiology practice,Mountain,Standard,10,2026-05-20,13300
+ACC-1234,Cedar Diagnostic Imaging,Imaging center,Southeast,Standard,25,2022-09-03,34400
+ACC-1235,Meadowbrook Heart & Vascular,Cardiology practice,Midwest,Standard,14,2023-09-24,21700
+ACC-1236,Fairview Heart & Vascular,Cardiology practice,Southwest,Standard,7,2024-02-24,10500
+ACC-1237,Cedar Regional Medical Center Southwest,Community hospital,Southwest,Standard,39,2026-02-28,63000
+ACC-1238,Westbrook Radiology Partners,Imaging center,Midwest,Standard,15,2024-08-20,23900
+ACC-1239,Valley Health Network Midwest,Hospital system,West,Professional,242,2023-03-21,454000
+ACC-1240,Lakeshore Health System West,Hospital system,Southwest,Standard,134,2026-04-20,215200
+ACC-1241,Cedar Heart Clinic,Cardiology practice,Southwest,Standard,10,2026-02-09,12600
+ACC-1242,Bayview Imaging West,Imaging center,West,Enterprise,12,2024-04-02,15700
+ACC-1243,Riverside Health Network Southeast,Hospital system,Southeast,Professional,46,2025-02-03,92300
+ACC-1244,Coastal Regional Medical Center,Community hospital,Southeast,Professional,29,2025-12-20,45900
+ACC-1245,St. Luke's Imaging Midwest,Imaging center,Southeast,Standard,13,2023-01-25,21500
+ACC-1246,Hillcrest Heart & Vascular,Cardiology practice,Southwest,Standard,6,2023-07-01,9100
+ACC-1247,Pinecrest Radiology Partners,Imaging center,West,Professional,10,2024-09-19,15300
+ACC-1248,Cedar Community Hospital Midwest,Community hospital,West,Professional,28,2023-10-04,39900
+ACC-1249,Lakeshore Memorial Hospital Northeast,Community hospital,Southeast,Standard,43,2023-06-01,66900
+ACC-1250,Sierra Community Hospital Southwest,Community hospital,Southeast,Professional,35,2024-09-13,61500
+ACC-1251,Oakwood Diagnostic Imaging West,Imaging center,West,Standard,11,2023-03-04,18600
+ACC-1252,Canyon Cardiology Associates,Cardiology practice,Northeast,Professional,11,2023-07-05,13400
+ACC-1253,Granite Memorial Hospital,Community hospital,Northeast,Professional,33,2025-12-06,60100
+ACC-1254,Granite Health Network,Hospital system,Mountain,Standard,138,2024-02-14,211200
+ACC-1255,Sierra Health Network,Hospital system,Mountain,Standard,176,2026-03-11,283900
+ACC-1256,Valley Radiology Partners,Imaging center,Northeast,Standard,19,2024-03-11,29700
+ACC-1257,Harbor Heart & Vascular Southeast,Cardiology practice,Southwest,Standard,7,2024-08-16,10600
+ACC-1258,Westbrook Health System,Hospital system,Mountain,Standard,143,2024-05-04,263800
+ACC-1259,Brookside Health System,Hospital system,Southeast,Professional,198,2022-07-08,402700
+ACC-1260,Granite Radiology Partners,Imaging center,Mountain,Standard,27,2022-12-18,46400
+ACC-1261,Silver Lake Medical Group,Hospital system,Mountain,Standard,247,2026-05-13,450900
+ACC-1262,Redwood Heart & Vascular,Cardiology practice,Southeast,Standard,4,2023-11-24,5300
+ACC-1263,Sierra Community Hospital Northeast,Community hospital,Southwest,Enterprise,49,2024-12-21,72000
+ACC-1264,Valley Medical Group Southwest,Hospital system,West,Standard,134,2023-10-04,252500
+ACC-1265,Silver Lake Heart & Vascular Southeast,Cardiology practice,Southeast,Standard,5,2025-02-24,7700
+ACC-1266,Valley Health System Northeast,Hospital system,Midwest,Professional,44,2023-08-11,86400
+ACC-1267,Coastal Medical Group,Hospital system,Mountain,Enterprise,55,2023-10-10,100500
+ACC-1268,Riverside Medical Group Mountain,Hospital system,Southeast,Professional,183,2024-12-07,374200
+ACC-1269,Oakwood Health Network Mountain,Hospital system,Midwest,Standard,223,2023-02-20,346700
+ACC-1270,Northgate Health Network,Hospital system,Northeast,Professional,62,2023-04-24,115300
+ACC-1271,Coastal Medical Group Northeast,Hospital system,Southwest,Standard,175,2026-03-25,324800
+ACC-1272,Meadowbrook Health System Mountain,Hospital system,West,Professional,140,2025-03-19,227600
+ACC-1273,Riverside Medical Group Northeast,Hospital system,Northeast,Enterprise,127,2022-09-13,257700
+ACC-1274,Granite Radiology Partners Northeast,Imaging center,Mountain,Enterprise,5,2025-07-04,8600
+ACC-1275,Summit Diagnostic Imaging,Imaging center,Southwest,Professional,28,2025-02-22,43400
+ACC-1276,Harbor Regional Medical Center,Community hospital,Southeast,Professional,37,2023-09-16,63300
+ACC-1277,Summit Memorial Hospital Northeast,Community hospital,Southwest,Standard,18,2023-12-28,30800
+ACC-1278,Mercy Regional Medical Center,Community hospital,Mountain,Professional,59,2024-04-05,106900
+ACC-1279,Fairview Heart & Vascular Mountain,Cardiology practice,Midwest,Professional,9,2026-02-02,11600
+ACC-1280,Coastal Cardiology Associates Southwest,Cardiology practice,Southeast,Enterprise,10,2025-01-24,12500
+ACC-1281,Valley Medical Group Southeast,Hospital system,West,Professional,135,2024-06-14,261500
+ACC-1282,Pinecrest Health Network Midwest,Hospital system,Northeast,Enterprise,69,2026-02-27,122200
+ACC-1283,Canyon Health System,Hospital system,Southeast,Enterprise,209,2023-06-26,335800
+ACC-1284,Pinecrest Health System Mountain,Hospital system,Midwest,Standard,143,2023-05-18,252800
+ACC-1285,Hillcrest Diagnostic Imaging,Imaging center,Mountain,Standard,8,2024-07-27,12400
+ACC-1286,Northgate Community Hospital,Community hospital,Midwest,Standard,29,2023-06-25,45800
+ACC-1287,Lakeshore Health Network Southeast,Hospital system,Mountain,Professional,92,2023-01-11,141800
+ACC-1288,Coastal Regional Medical Center Southeast,Community hospital,West,Standard,42,2024-05-09,76100
+ACC-1289,Lakeshore Community Hospital Southwest,Community hospital,Southeast,Standard,51,2026-01-15,84800
+ACC-1290,Pinecrest Medical Group Southwest,Hospital system,Southwest,Professional,206,2022-07-17,331500
+ACC-1291,Westbrook Cardiology Associates West,Cardiology practice,West,Standard,10,2022-07-10,13300
+ACC-1292,Mercy Health Network West,Hospital system,Mountain,Standard,217,2022-07-20,442800
+ACC-1293,Brookside Heart & Vascular Southeast,Cardiology practice,West,Standard,3,2023-11-25,4200
+ACC-1294,Brookside Medical Group,Hospital system,Northeast,Enterprise,236,2022-10-29,418200
+ACC-1295,Pinecrest Cardiology Associates,Cardiology practice,Southwest,Standard,4,2022-11-25,5100
+ACC-1296,Meadowbrook Heart & Vascular Mountain,Cardiology practice,Southeast,Standard,15,2025-03-31,19000
+ACC-1297,Granite Heart Clinic,Cardiology practice,Midwest,Standard,11,2023-11-23,16400
+ACC-1298,Oakwood Cardiology Associates Midwest,Cardiology practice,Northeast,Standard,8,2025-07-19,12500
+ACC-1299,Lakeshore Radiology Partners West,Imaging center,West,Standard,16,2023-10-05,25800
+ACC-1300,Riverside Imaging Southeast,Imaging center,Northeast,Professional,13,2025-09-13,20700
+ACC-1301,Brookside Diagnostic Imaging Midwest,Imaging center,Northeast,Standard,22,2025-01-06,29800
+ACC-1302,Prairie Health Network West,Hospital system,Mountain,Standard,134,2026-01-16,212900
+ACC-1303,Cedar Regional Medical Center Mountain,Community hospital,Mountain,Standard,49,2024-05-01,75500
+ACC-1304,Harbor Memorial Hospital Midwest,Community hospital,West,Standard,34,2024-05-27,49500
+ACC-1305,Fairview Cardiology Associates Southwest,Cardiology practice,Northeast,Standard,6,2025-07-15,7900
+ACC-1306,Westbrook Community Hospital Southeast,Community hospital,Southwest,Professional,16,2025-12-06,27600
+ACC-1307,Westbrook Memorial Hospital Mountain,Community hospital,West,Enterprise,47,2025-12-10,81300
+ACC-1308,Valley Imaging,Imaging center,Southeast,Professional,5,2023-06-20,7700
+ACC-1309,Granite Medical Group,Hospital system,Mountain,Professional,208,2023-03-12,323000
+ACC-1310,Sierra Health Network Mountain,Hospital system,Midwest,Enterprise,179,2022-11-30,300000
+ACC-1311,Silver Lake Memorial Hospital Midwest,Community hospital,Northeast,Professional,54,2023-03-24,80100
+ACC-1312,Granite Community Hospital,Community hospital,Northeast,Professional,32,2024-11-26,56200
+ACC-1313,Brookside Health System Southeast,Hospital system,Northeast,Enterprise,127,2026-05-17,204100
+ACC-1314,Canyon Regional Medical Center Northeast,Community hospital,Mountain,Professional,53,2025-08-26,95700
+ACC-1315,Canyon Community Hospital,Community hospital,Southeast,Standard,27,2024-03-30,44500
+ACC-1316,Clearwater Community Hospital West,Community hospital,Mountain,Professional,23,2024-06-30,32600
+ACC-1317,Canyon Community Hospital Southwest,Community hospital,Mountain,Professional,33,2024-08-04,56300
+ACC-1318,Sierra Diagnostic Imaging West,Imaging center,Southwest,Standard,17,2023-04-13,28300
+ACC-1319,Oakwood Medical Group Southwest,Hospital system,West,Enterprise,94,2022-10-11,191900
+ACC-1320,Lakeshore Heart & Vascular,Cardiology practice,Mountain,Standard,7,2024-04-28,11000
+ACC-1321,Highland Heart & Vascular,Cardiology practice,West,Standard,5,2026-01-19,7300
+ACC-1322,Lakeshore Regional Medical Center Northeast,Community hospital,Southwest,Professional,19,2023-01-22,33800
+ACC-1323,Riverside Memorial Hospital Mountain,Community hospital,Northeast,Standard,37,2022-11-10,51400
+ACC-1324,Northgate Regional Medical Center Mountain,Community hospital,Mountain,Standard,36,2024-10-19,59800
+ACC-1325,Harbor Heart & Vascular Midwest,Cardiology practice,Southeast,Standard,7,2022-06-30,10100
+ACC-1326,Brookside Imaging Northeast,Imaging center,Southeast,Standard,11,2026-04-27,16100
+ACC-1327,Meadowbrook Cardiology Associates Southwest,Cardiology practice,West,Standard,15,2025-04-13,18600
+ACC-1328,Fairview Community Hospital,Community hospital,Northeast,Enterprise,47,2025-12-15,77700
+ACC-1329,Sierra Radiology Partners,Imaging center,Southwest,Standard,21,2025-12-21,32000
+ACC-1330,Fairview Health Network,Hospital system,Mountain,Standard,189,2025-04-11,361000
+ACC-1331,Bayview Radiology Partners,Imaging center,West,Professional,13,2025-07-31,18300
+ACC-1332,Bayview Medical Group,Hospital system,Northeast,Standard,82,2026-01-10,138700
+ACC-1333,St. Luke's Imaging Southeast,Imaging center,West,Professional,23,2022-10-10,39100
+ACC-1334,Fairview Heart & Vascular Midwest,Cardiology practice,Midwest,Standard,7,2022-11-07,9900
+ACC-1335,Brookside Medical Group West,Hospital system,Mountain,Professional,158,2025-04-29,266300
+ACC-1336,Summit Imaging Southeast,Imaging center,Southwest,Standard,12,2023-08-01,15700
+ACC-1337,Harbor Medical Group West,Hospital system,Southwest,Standard,45,2024-03-15,73700
+ACC-1338,Redwood Diagnostic Imaging Midwest,Imaging center,Midwest,Professional,8,2024-11-22,10700
+ACC-1339,Sierra Health System Southeast,Hospital system,Midwest,Professional,195,2026-04-01,305600
+ACC-1340,Summit Heart Clinic West,Cardiology practice,Mountain,Professional,7,2026-05-09,8500
+ACC-1341,Highland Medical Group,Hospital system,Southwest,Standard,248,2022-12-16,493800
+ACC-1342,Redwood Heart Clinic Midwest,Cardiology practice,Midwest,Standard,3,2026-04-19,4800
+ACC-1343,Riverside Cardiology Associates,Cardiology practice,West,Standard,8,2022-12-21,11800
+ACC-1344,Silver Lake Radiology Partners,Imaging center,Midwest,Standard,28,2022-12-24,42300
+ACC-1345,Oakwood Diagnostic Imaging Mountain,Imaging center,Mountain,Standard,11,2023-02-26,14800
+ACC-1346,Highland Imaging Northeast,Imaging center,Southeast,Professional,25,2024-01-18,34500
+ACC-1347,Riverside Cardiology Associates West,Cardiology practice,Southeast,Enterprise,8,2024-06-29,9700
+ACC-1348,Fairview Health System West,Hospital system,Southeast,Professional,110,2024-05-11,168900
+ACC-1349,Prairie Imaging Southwest,Imaging center,Mountain,Standard,12,2024-03-16,18300
+ACC-1350,Prairie Health System Southeast,Hospital system,Southwest,Enterprise,169,2025-12-02,281100
+ACC-1351,Redwood Radiology Partners Mountain,Imaging center,Southwest,Professional,18,2023-10-25,30800
+ACC-1352,Harbor Health System Northeast,Hospital system,West,Standard,145,2024-05-05,263200
+ACC-1353,St. Luke's Radiology Partners,Imaging center,Southeast,Standard,8,2022-09-07,10500
+ACC-1354,Riverside Radiology Partners Southwest,Imaging center,Southwest,Professional,24,2023-04-09,38800
+ACC-1355,St. Luke's Memorial Hospital Southwest,Community hospital,Southwest,Standard,44,2023-04-16,80100
+ACC-1356,St. Luke's Regional Medical Center,Community hospital,Midwest,Professional,47,2024-02-28,86400
+ACC-1357,Summit Imaging Mountain,Imaging center,Midwest,Standard,17,2024-05-16,22100
+ACC-1358,Harbor Radiology Partners,Imaging center,Northeast,Professional,17,2023-09-04,26600
+ACC-1359,Pinecrest Memorial Hospital,Community hospital,Northeast,Professional,48,2022-08-22,67600
+ACC-1360,Pinecrest Radiology Partners Northeast,Imaging center,Southeast,Standard,7,2025-12-31,10800
+ACC-1361,Bayview Heart & Vascular,Cardiology practice,Southwest,Standard,5,2026-02-28,6700
+ACC-1362,Meadowbrook Health Network Southwest,Hospital system,Mountain,Professional,164,2026-04-12,255400
+ACC-1363,Westbrook Health System Midwest,Hospital system,Midwest,Enterprise,117,2024-10-14,193800
+ACC-1364,Canyon Health System Mountain,Hospital system,Southwest,Professional,146,2025-10-20,286700
+ACC-1365,Redwood Imaging Southwest,Imaging center,Mountain,Standard,25,2026-01-17,42300
+ACC-1366,Canyon Memorial Hospital,Community hospital,Northeast,Standard,17,2022-07-06,29800
+ACC-1367,Oakwood Imaging,Imaging center,Midwest,Enterprise,22,2025-03-28,30800
+ACC-1368,Canyon Diagnostic Imaging,Imaging center,Southwest,Professional,26,2022-09-01,38100
+ACC-1369,Highland Community Hospital,Community hospital,Mountain,Enterprise,36,2023-05-03,51500
+ACC-1370,Bayview Heart Clinic Northeast,Cardiology practice,West,Standard,3,2024-05-02,4000
+ACC-1371,Coastal Imaging,Imaging center,West,Professional,25,2022-09-27,41200
+ACC-1372,Cedar Health Network Northeast,Hospital system,Northeast,Professional,230,2023-07-28,470900
+ACC-1373,Silver Lake Regional Medical Center,Community hospital,Midwest,Standard,15,2025-08-17,24100
+ACC-1374,Granite Community Hospital Midwest,Community hospital,Mountain,Professional,29,2022-12-21,44700
+ACC-1375,Brookside Health Network Mountain,Hospital system,Mountain,Professional,49,2022-08-31,88200
+ACC-1376,Coastal Medical Group Southwest,Hospital system,Southeast,Standard,63,2023-10-10,105300
+ACC-1377,Oakwood Heart Clinic,Cardiology practice,West,Professional,6,2025-03-31,8400
+ACC-1378,Hillcrest Regional Medical Center,Community hospital,West,Standard,49,2023-12-24,82000
+ACC-1379,Brookside Regional Medical Center West,Community hospital,Southeast,Enterprise,18,2023-07-07,29200
+ACC-1380,Coastal Imaging Southeast,Imaging center,West,Professional,9,2026-05-03,11600
+ACC-1381,Clearwater Diagnostic Imaging West,Imaging center,West,Standard,12,2024-05-01,17100
+ACC-1382,Valley Cardiology Associates Southwest,Cardiology practice,Southwest,Professional,5,2026-03-11,6600
+ACC-1383,Fairview Radiology Partners,Imaging center,Midwest,Professional,8,2024-04-12,13600
+ACC-1384,Harbor Memorial Hospital Southeast,Community hospital,Southeast,Standard,35,2023-04-30,50000
+ACC-1385,Prairie Memorial Hospital Mountain,Community hospital,Midwest,Enterprise,36,2025-03-10,63100
+ACC-1386,Oakwood Heart & Vascular,Cardiology practice,Mountain,Standard,9,2023-02-19,14000
+ACC-1387,Redwood Radiology Partners Southwest,Imaging center,Midwest,Enterprise,10,2026-04-24,16900
+ACC-1388,Silver Lake Cardiology Associates,Cardiology practice,Northeast,Standard,5,2023-04-21,6600
+ACC-1389,Cedar Medical Group,Hospital system,Northeast,Enterprise,181,2025-02-06,327900
+ACC-1390,Summit Cardiology Associates,Cardiology practice,Mountain,Professional,11,2023-08-02,14000
+ACC-1391,Meadowbrook Radiology Partners Southeast,Imaging center,Southwest,Standard,23,2024-07-08,38400
+ACC-1392,Meadowbrook Medical Group,Hospital system,West,Enterprise,111,2023-01-23,195000
+ACC-1393,Cedar Radiology Partners Midwest,Imaging center,Mountain,Professional,30,2023-03-20,45900
+ACC-1394,Granite Imaging Southeast,Imaging center,Southwest,Standard,15,2025-09-13,20800
+ACC-1395,Summit Health Network Northeast,Hospital system,Southeast,Standard,123,2026-03-23,219200
+ACC-1396,Pinecrest Regional Medical Center Northeast,Community hospital,Mountain,Professional,41,2024-01-23,65600
+ACC-1397,Riverside Cardiology Associates Southeast,Cardiology practice,Northeast,Standard,10,2026-03-27,15500
+ACC-1398,Pinecrest Health System West,Hospital system,Midwest,Professional,208,2023-09-05,393700
+ACC-1399,Summit Community Hospital Midwest,Community hospital,West,Professional,25,2025-12-16,45800
+ACC-1400,Oakwood Memorial Hospital,Community hospital,Southeast,Standard,55,2023-01-20,85200
