@@ -9,14 +9,183 @@ A portfolio project covering the core weekly work of a Customer Success or Suppo
 
 | Workstream | Focus | Data | Status |
 |---|---|---|---|
-| 1 | LLM ticket classification, validated against ground truth | Bitext customer support dataset | Planned |
-| 2 | SLA, backlog and resolution KPIs in SQL (Snowflake + dbt) | NYC 311 service requests | Planned |
+| 1 | LLM ticket classification, validated against ground truth | Bitext customer support dataset | **Complete** |
+| 2 | SLA, backlog and resolution KPIs in SQL (dbt + DuckDB) | NYC 311 (DOHMH, DHS, DPR) | **Complete** |
 | 3 | Volume forecast (SARIMA) and staffing scenarios | NYC 311 service requests | Planned |
 | 4 | Explainable customer health score | Simulated healthcare accounts | **Complete** |
 
 Each workstream uses the dataset best suited to its question. The datasets describe different populations and are never joined.
 
-**Workstream 4 headline:** 88% of red-flagged accounts were truly deteriorating (vs a 27% base rate), holding at 80% on an unseen test date. The score did not predict near-term churn, and the write-up below explains why.
+### Headlines
+- **Workstream 1:** Error analysis and taxonomy boundary rules raised LLM classification accuracy from **97.5% to 99.2%** on a held-out test set (errors 25 → 8, McNemar p = 0.0015). A 0.90 confidence cutoff sends 2.7% of tickets to human review and auto-labels the rest at 99.7%.
+- **Workstream 2:** 7 support KPIs on **773K NYC 311 requests**, built as dbt models on DuckDB with 10 data tests. Data-quality checks found that **93% of one agency's apparent backlog** was closed requests missing timestamps.
+- **Workstream 4:** **88%** of red-flagged accounts were truly deteriorating (vs a 27% base rate), holding at 80% on an unseen test date. The score did not predict near-term churn, and the write-up explains why.
+
+### Repository layout
+| Path | Contents |
+|---|---|
+| `01_llm_ticket_classification.ipynb` | Workstream 1 notebook |
+| `02_support_kpis_sql.ipynb`, `dbt_311/` | Workstream 2 notebook and dbt project (models, seed, tests) |
+| `04_customer_health_score.ipynb`, `generate_health_data.py`, `data/`, `truth/` | Workstream 4 notebook, data generator, simulated data and hidden labels |
+| `images/` | Charts used in this README |
+
+---
+
+## Workstream 1: LLM ticket classification and validation
+
+**Question:** What are customers contacting support about, and is the AI classifying it correctly?
+
+**Notebook:** `01_llm_ticket_classification.ipynb` · **Data:** [Bitext Customer Support dataset](https://huggingface.co/datasets/bitext/Bitext-customer-support-llm-chatbot-training-dataset) (26,872 labeled messages, 11 categories, 27 intents; CDLA-Sharing-1.0)
+
+> Bitext messages are synthetic e-commerce support requests with known ground-truth labels. The point here is the **validation method**: classify at scale, prove where the labels are right or wrong, and fix what's fixable. That method transfers directly to healthcare support tickets.
+
+### Method
+- **Two disjoint stratified samples** of 1,001 messages each (91 per category, all 27 intents in both). The **dev** set is used for error analysis and prompt changes. The **test** set is scored only twice, with the first and the final taxonomy, so the before-and-after is honest.
+- **Model:** `gemini-3.5-flash-lite`, pinned by exact version, at temperature 0. It returns structured JSON per message: category, a one-sentence summary, and a 0–1 confidence.
+- **Taxonomy:** a one-line definition and one example per category, all in the prompt.
+- **Cost control:** 20 messages per request, with batches shuffled so each request mixes categories. Results are cached after every request, so reruns never call the API again. About 235 requests in total, on the free tier.
+
+### Error analysis (dev set, taxonomy v1: 97.0%, 30 errors)
+All 30 misclassified messages were read and grouped by cause:
+
+| Cause | True intent → predicted | Errors |
+|---|---|---|
+| Weak definition: "Can I order from {{country}}?" asks whether you deliver there | delivery_options → ORDER | 9 |
+| Weak definition: "withdrawal" and "early exit" fees weren't described as CANCEL | check_cancellation_fee → PAYMENT, REFUND, ACCOUNT | 7 |
+| Genuinely ambiguous: "When will my order arrive?" vs order tracking | delivery_period → ORDER | 5 |
+| Weak definition: account "termination" read as cancellation | delete_account → CANCEL | 2 |
+| Questionable label: "I can no longer pay for my order" is labeled cancel_order | cancel_order → PAYMENT | 2 |
+| One-offs | various | 5 |
+
+**Taxonomy v2** adds boundary rules to the six definitions involved (ACCOUNT, ORDER, PAYMENT, DELIVERY, SHIPPING, CANCEL), saying which category wins when two seem to apply. The other five definitions are unchanged. The questionable labels were left alone rather than prompting around them.
+
+On dev, v2 reached 98.9% (11 errors), with a measurable trade-off: the new DELIVERY rule pulled 6 order-tracking and order-placing messages out of ORDER, so ORDER recall fell from 0.956 to 0.901. v2 was then frozen rather than tuned further on dev.
+
+### Results (held-out test set, 1,001 messages)
+
+| | v1 | v2 |
+|---|---|---|
+| Accuracy | 97.5% | **99.2%** |
+| Macro F1 | 0.975 | **0.992** |
+| Errors | 25 | **8** |
+| DELIVERY recall | 0.835 | **0.989** |
+| CANCEL recall | 0.967 | **1.000** |
+| ORDER recall | 0.934 | 0.934 |
+
+- **The improvement is statistically real.** On the same messages, v2 fixed 22 and broke 5 (exact McNemar test, p = 0.0015).
+- **The rules generalized beyond the dev errors.** On the test set, v1 also sent 6 DELIVERY messages to SHIPPING, a pattern that caused only a couple of errors on dev. The v2 rule "SHIPPING = shipping address only" cut it to 1.
+- **The remaining weak spot is the ORDER / DELIVERY boundary.** 5 of the 8 remaining errors are ORDER messages labeled DELIVERY.
+
+![Error matrices, v1 vs v2](images/ws1_error_matrix_test.png)
+
+### Consistency
+Re-classifying 200 test messages, which put them in different batches, kept **97.5%** of labels the same (195 of 200). That is below the 99.2% accuracy: even at temperature 0, neighbouring messages in a batch can sway a label. All 5 flips were on ambiguous messages, and in 3 of the 5 the original label was the wrong one. So **instability marks hard tickets**, and a second pass is a cheap extra signal for routing.
+
+### Routing low-confidence labels to human review (test set, v2)
+
+| Confidence cutoff | Sent to review | Accuracy of auto-labels | Errors caught |
+|---|---|---|---|
+| 0.80 | 0.3% | 99.3% | 1 of 8 |
+| 0.85 | 1.4% | 99.4% | 2 of 8 |
+| **0.90** | **2.7%** | **99.7%** | **5 of 8** |
+| 0.95 | 9.5% | 99.9% | 7 of 8 |
+
+**Recommended operating point: 0.90.** About 1 ticket in 37 goes to a person, and the rest are auto-labeled at 99.7% accuracy.
+
+### Limitations
+- Bitext is synthetic, clean-labeled retail data. Real tickets are longer, often raise several issues at once, and have noisier labels, so expect lower accuracy and more questionable labels.
+- With only 8 test errors, the routing estimates are thin; validate the cutoff on a larger sample before relying on it.
+- Confidence is self-reported by the model. It worked here but isn't guaranteed to stay calibrated, so it should be re-checked whenever the model or prompt changes.
+- This is one model and one prompt style; there is no comparison with other models.
+- Free-tier Gemini requests may be used to improve Google's products. That's fine for a public dataset, but not for real customer or patient data.
+
+### Resume bullet
+> Classified 2,000 customer-support messages into an 11-category taxonomy with an LLM (structured JSON output, batched and cached), validating labels against ground truth on a held-out test set. Error analysis of all misclassifications led to taxonomy boundary rules that raised accuracy from 97.5% to 99.2% (errors 25 → 8, McNemar p = 0.0015). Confidence routing sends 2.7% of tickets to human review while auto-labeling the rest at 99.7%.
+
+---
+## Workstream 2: Support KPIs in SQL
+
+**Question:** Are we meeting response and resolution targets, and where is the backlog building?
+
+**Notebook:** `02_support_kpis_sql.ipynb` · **dbt project:** `dbt_311/` · **Stack:** dbt + DuckDB (runs in Colab; the models are standard SQL and portable to Snowflake by switching the dbt adapter)
+
+> **Data:** [NYC 311 Service Requests from 2020 to Present](https://data.cityofnewyork.us/Social-Services/311-Service-Requests-from-2020-to-Present/erm2-nwe9), pulled through the Socrata API for three agencies: **DOHMH** (Health and Mental Hygiene), **DHS** (Homeless Services) and **DPR** (Parks). Requests created from Jan 1, 2024 to Oct 31, 2026: **773,169 requests**. These are public service requests, not customer support tickets. The KPIs and methods are the ones a support-operations team uses, applied to real operational data. As NYC's data dictionary notes, the data reflects complaints *about* the city, not objective measures of conditions.
+
+### dbt project
+
+| Layer | Model | What it does |
+|---|---|---|
+| Source | `raw_311` | API extract, all text. The API still uses the pre-December-2025 field names (`complaint_type`, `descriptor`). |
+| Staging | `stg_service_requests` | Types and renames to current 311 labels (Problem, Problem Detail), **de-duplicates with `ROW_NUMBER()`**, applies the snapshot, builds a location key |
+| Seed | `sla_targets` | Assumed SLA target in days per agency and problem, plus an agency default |
+| Intermediate | `int_requests_enriched` | **Joins** SLA targets (problem-specific, falling back to the agency default), resolution time, SLA outcome, and repeat/duplicate flags via **`LAG()`** over location and problem |
+| Marts | 7 KPI models | Below |
+
+**All KPIs are measured as of a snapshot of Oct 31, 2026.** A request closed after that date counts as open on the snapshot.
+
+| KPI | Definition | SQL technique |
+|---|---|---|
+| Ticket volume | Requests opened per complete week, by agency and problem | `date_trunc`, grouping |
+| Time to resolution | Closed minus created; **median and 90th percentile** lead, and the mean is shown only to illustrate skew | `quantile_cont`, `GROUPING SETS` for agency-wide rows |
+| Backlog | Requests open at the end of each day | Running total of opened minus closed with a window `SUM() OVER`, on a generated calendar `CROSS JOIN` agencies |
+| SLA attainment | Share resolved within the target for their problem type; requests still open but not yet due are excluded | Two-step join to the seed with fallback |
+| Repeat rate | Same problem at the same location **1 hour to 30 days** after a previous request | `LAG()` partitioned by location and problem |
+| Duplicates | Same problem at the same location **within 1 hour** (several people reporting one incident) | `LAG()` (dedup of IDs uses `ROW_NUMBER()`) |
+| Workload distribution | Each agency's share of weekly volume and its week-over-week change | Window share-of-total, `LAG()` |
+
+**Tests (10):** unique and not-null request IDs, accepted agency values, no closed date before its created date, **an SLA target present for every request**, SLA attainment between 0 and 1, and weekly workload shares summing to 100%. All 20 dbt nodes pass on the full data.
+
+### Results (Jan 2024 – Oct 2026)
+
+| | DHS | DOHMH | DPR |
+|---|---|---|---|
+| Requests per week (avg) | 995 | 1,676 | 2,555 |
+| Median days to resolve | 0.28 | 2.61 | 9.93 |
+| 90th-percentile days | 8.1 | 77.3 | 278.9 |
+| Mean days (for contrast) | 3.8 | 32.4 | 71.0 |
+| Open backlog at snapshot | 2,332 | 18,064 | 75,142 |
+| Repeat rate (1 h–30 d) | 46.3% | 23.6% | 26.0% |
+| Duplicate rate (≤ 1 h) | 4.1% | 5.1% | 5.5% |
+
+- **Resolution times are heavily skewed,** which is why the plan leads with the median. DPR's mean of 71 days is 7× its median.
+- **The backlog is building at DPR.** It reached 75,142 open requests at the snapshot, close to its peak of 75,582 on Oct 18, 2026. DOHMH's backlog peaked at 27,138 in January 2025 and has since fallen to 18,064.
+- **Workload is lopsided and volatile.** DPR averages 46% of combined weekly volume, but one week reached 7,354 requests, 2.9× its average. Swings like that drive staffing needs (Workstream 3).
+- **DHS's 46% repeat rate mostly reflects recurring conditions at the same locations** (the same encampment or person), not failed resolutions. Repeat rate needs context per problem type before it's treated as a quality measure.
+
+**Lowest SLA attainment among high-volume problems** (targets are assumptions; see below):
+
+| Agency | Problem | Target (days) | Attainment |
+|---|---|---|---|
+| DOHMH | Food Establishment | 14 | 1.8% *(administrative closure)* |
+| DOHMH | Mobile Food Vendor | 14 | 0.6% *(administrative closure)* |
+| DPR | New Tree Request | 30 | 3.8% |
+| DPR | Root/Sewer/Sidewalk Condition | 90 | 30.0% |
+| DPR | Overgrown Tree/Branches | 60 | 44.0% |
+| DPR | Maintenance or Facility | 14 | 47.1% |
+| DHS | Homeless Person Assistance | 1 | 88.8% |
+| DOHMH | Rodent | 30 | 95.5% |
+
+### Data-quality findings (checked before reporting)
+Three numbers looked wrong at first, and each turned out to be a data issue, not a performance finding:
+
+1. **93% of DHS's apparent backlog was missing timestamps.** The first build showed 35,875 open DHS requests, despite a median resolution time under 7 hours. About 33,500 of them had status *Closed* but no closed date, with a median age of 785 days. The models now treat these as *closed, date unknown*: excluded from backlog and from SLA attainment. The real backlog is **2,332**, and Homeless Person Assistance SLA attainment moved from 61% to **89%**.
+2. **About half of food-safety and smoking closures are administrative.** 58% of Food Establishment, 51% of Mobile Food Vendor and 46% of Smoking or Vaping closures happen on **day 59–61**, which points to a 60-day auto-close. For these problems the closed date records a process step, not a resolution, so a resolution SLA can't be measured from it. The seed table flags them, and the flag carries through to the SLA model.
+3. **DHS has a two-week reporting gap.** The week of Feb 2, 2026 has 4 requests, and the next week 175, against a normal of about 1,000. That's a data gap, not a quiet period, and it has to be excluded or imputed before forecasting (Workstream 3).
+
+Similarly, DOHMH Rodent's median of 0.03 days (about 45 minutes) suggests closure happens at an early step such as scheduling an inspection. That hasn't been verified, so treat Rodent resolution time as time to first action.
+
+### Limitations
+- **The SLA targets are assumptions, not official NYC SLAs.** NYC's `due_date` column is empty for all 773,169 requests. Low attainment for the defaulted problem types (for example, Construction Lead Dust at 0%) is more likely a mis-set target or an administrative process than poor service. Real targets should come from the agencies.
+- **The backlog warms up.** Requests opened before 2024 are out of scope, so early-2024 backlog is understated.
+- **Location matching is approximate.** Repeats and duplicates match on street address plus borough, or on lat/long rounded to about 10 m. Requests without either are excluded.
+- **Three agencies only.** They were chosen for relevance (health and social services) and manageable size, not to represent all of 311.
+
+### Reproduce
+1. Run the pull cell in `02_support_kpis_sql.ipynb` to download the data (about 10 minutes; the raw data is not stored in the repo).
+2. Load it into DuckDB and run `dbt build --profiles-dir .` in `dbt_311/` (about 20 seconds).
+
+### Resume bullet
+> Built 7 support-operations KPIs (volume, backlog, median and P90 resolution time, SLA attainment, repeat and duplicate contacts, workload share) on 773K NYC 311 service requests with dbt and DuckDB, using window functions, GROUPING SETS, joins with fallbacks and ROW_NUMBER deduplication, with documented definitions and 10 data tests. Data-quality checks found that 93% of one agency's apparent backlog was closed requests missing timestamps, and that about half of food-safety closures were 60-day administrative auto-closes.
 
 ---
 ## Workstream 4: Customer health score
