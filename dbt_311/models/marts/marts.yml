@@ -1,0 +1,19 @@
+version: 2
+models:
+  - name: kpi_volume_weekly
+    description: "Ticket volume: requests opened per complete Monday-start week, by agency and problem."
+    columns:
+      - name: requests_opened
+        data_tests: [not_null]
+  - name: kpi_resolution_time
+    description: "Time to resolution (closed minus created) in days: median and 90th percentile lead; mean is shown only to illustrate skew. problem = 'ALL' rows are agency-wide."
+  - name: kpi_backlog_daily
+    description: "Backlog: requests open at the end of each day (running opened minus closed). Warm-up caveat: requests created before 2024 are out of scope."
+  - name: kpi_sla_attainment_monthly
+    description: "SLA attainment: share of evaluable requests resolved within the assumed target for their problem (sla_targets seed), by month created."
+  - name: kpi_repeat_rate_monthly
+    description: "Repeat rate: same problem at the same location 1 hour to 30 days after a previous request, among requests with a usable location."
+  - name: kpi_duplicates_monthly
+    description: "Duplicates: same problem at the same location within 1 hour of a previous request."
+  - name: kpi_workload_share_weekly
+    description: "Workload distribution: each agency's share of weekly volume across the three agencies, and the week-over-week change in that share."

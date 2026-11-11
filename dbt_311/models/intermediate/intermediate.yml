@@ -1,0 +1,14 @@
+version: 2
+models:
+  - name: int_requests_enriched
+    description: "Requests with SLA target, resolution hours, SLA outcome and repeat/duplicate flags."
+    columns:
+      - name: sla_days
+        description: "SLA target in days from the sla_targets seed (problem-specific, else agency default). Targets are assumptions, not official NYC SLAs."
+        data_tests: [not_null]
+      - name: met_sla
+        description: "TRUE = resolved within target; FALSE = resolved late or still open past target; NULL = open and not yet due, or closed with an unknown date (excluded from attainment)."
+      - name: is_duplicate_1h
+        description: "Same problem at the same location within 1 hour of a previous request."
+      - name: is_repeat_30d
+        description: "Same problem at the same location more than 1 hour and up to 30 days after a previous request."

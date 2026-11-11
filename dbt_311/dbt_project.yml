@@ -1,0 +1,16 @@
+name: support_kpis_311
+version: '1.0'
+profile: support_kpis_311
+model-paths: ["models"]
+seed-paths: ["seeds"]
+test-paths: ["tests"]
+
+vars:
+  # "As of" moment for every KPI: closures after this are treated as still open
+  snapshot_ts: '2026-10-31 23:59:59'
+
+models:
+  support_kpis_311:
+    staging:      {+materialized: view}
+    intermediate: {+materialized: table}
+    marts:        {+materialized: table}

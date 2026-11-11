@@ -1,0 +1,8 @@
+version: 2
+sources:
+  - name: nyc311
+    description: "NYC 311 Service Requests from 2020 to Present (data.cityofnewyork.us, erm2-nwe9), pulled via the Socrata API for DOHMH, DHS and DPR, Jan 2024 - Oct 2026."
+    schema: main
+    tables:
+      - name: raw_311
+        description: "Raw API extract, all columns as text. The API still uses the pre-Dec-2025 field names complaint_type and descriptor."

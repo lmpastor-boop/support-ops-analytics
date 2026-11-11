@@ -1,0 +1,25 @@
+version: 2
+models:
+  - name: stg_service_requests
+    description: "One row per 311 service request, typed, renamed to current 311 labels, de-duplicated, and cut at the snapshot timestamp."
+    columns:
+      - name: request_id
+        description: "311 Unique Key."
+        data_tests: [unique, not_null]
+      - name: created_at
+        description: "When the customer submitted the request."
+        data_tests: [not_null]
+      - name: closed_at
+        description: "When the agency closed it. NULL = still open as of snapshot_ts."
+      - name: is_closed_without_date
+        description: "Status is Closed but the closed date is missing. Treated as closed with an unknown date: excluded from backlog and from SLA attainment."
+      - name: agency
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: ['DOHMH', 'DHS', 'DPR']
+      - name: problem
+        description: "First-level topic (formerly Complaint Type)."
+        data_tests: [not_null]
+      - name: location_key
+        description: "Address + borough, or rounded lat/long. NULL when neither is available."

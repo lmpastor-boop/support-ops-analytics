@@ -1,0 +1,16 @@
+agency,problem,sla_days,note
+DHS,Homeless Person Assistance,1,assumed target - urgent outreach
+DHS,Encampment,7,assumed target
+DHS,*default*,3,assumed default for other DHS problems
+DOHMH,Rodent,30,assumed target - inspection cycle
+DOHMH,Food Establishment,14,assumed target; CLOSURE IS ADMINISTRATIVE - 58% close on day 59-61
+DOHMH,Indoor Air Quality,30,assumed target
+DOHMH,Smoking or Vaping,30,assumed target; CLOSURE IS ADMINISTRATIVE - 46% close on day 59-61
+DOHMH,Mobile Food Vendor,14,assumed target; CLOSURE IS ADMINISTRATIVE - 51% close on day 59-61
+DOHMH,*default*,30,assumed default for other DOHMH problems
+DPR,Damaged Tree,30,assumed target
+DPR,Maintenance or Facility,14,assumed target
+DPR,Overgrown Tree/Branches,60,assumed target
+DPR,Dead/Dying Tree,60,assumed target
+DPR,Root/Sewer/Sidewalk Condition,90,assumed target
+DPR,*default*,30,assumed default for other DPR problems
