@@ -1,0 +1,21 @@
+agency,scenario,avg_weekly_volume,fte_avg_week,fte_peak_week,vs_base
+DHS,Base (median forecast),777.96,49.03,84.27,0.0
+DHS,High-demand weeks (upper 80% bound),1154.75,72.78,125.09,0.48
+DHS,Growth +15% volume,894.65,56.39,96.91,0.15
+DHS,Efficiency: handle time -15%,777.96,41.68,71.63,-0.15
+DHS,Stress: +15% volume at upper bound,1327.96,83.7,143.85,0.71
+DOHMH,Base (median forecast),1384.33,58.17,65.77,0.0
+DOHMH,High-demand weeks (upper 80% bound),1573.64,66.12,74.77,0.14
+DOHMH,Growth +15% volume,1591.98,66.89,75.64,0.15
+DOHMH,Efficiency: handle time -15%,1384.33,49.44,55.91,-0.15
+DOHMH,Stress: +15% volume at upper bound,1809.68,76.04,85.98,0.31
+DPR,Base (median forecast),1411.1,118.58,204.45,0.0
+DPR,High-demand weeks (upper 80% bound),2220.2,186.57,321.68,0.57
+DPR,Growth +15% volume,1622.77,136.37,235.12,0.15
+DPR,Efficiency: handle time -15%,1411.1,100.79,173.78,-0.15
+DPR,Stress: +15% volume at upper bound,2553.23,214.56,369.93,0.81
+ALL,Base (median forecast),3573.39,225.78,354.5,0.0
+ALL,High-demand weeks (upper 80% bound),4948.59,325.47,521.53,0.44
+ALL,Growth +15% volume,4109.4,259.64,407.67,0.15
+ALL,Efficiency: handle time -15%,3573.39,191.91,301.32,-0.15
+ALL,Stress: +15% volume at upper bound,5690.88,374.29,599.76,0.66
