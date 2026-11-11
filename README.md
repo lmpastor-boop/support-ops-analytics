@@ -11,7 +11,7 @@ A portfolio project covering the core weekly work of a Customer Success or Suppo
 |---|---|---|---|
 | 1 | LLM ticket classification, validated against ground truth | Bitext customer support dataset | **Complete** |
 | 2 | SLA, backlog and resolution KPIs in SQL (dbt + DuckDB) | NYC 311 (DOHMH, DHS, DPR) | **Complete** |
-| 3 | Volume forecast (SARIMA) and staffing scenarios | NYC 311 service requests | Planned |
+| 3 | Volume forecast (backtested ARIMA/SARIMA) and staffing scenarios | NYC 311 (DOHMH, DHS, DPR) | **Complete** |
 | 4 | Explainable customer health score | Simulated healthcare accounts | **Complete** |
 
 Each workstream uses the dataset best suited to its question. The datasets describe different populations and are never joined.
@@ -19,6 +19,7 @@ Each workstream uses the dataset best suited to its question. The datasets descr
 ### Headlines
 - **Workstream 1:** Error analysis and taxonomy boundary rules raised LLM classification accuracy from **97.5% to 99.2%** on a held-out test set (errors 25 → 8, McNemar p = 0.0015). A 0.90 confidence cutoff sends 2.7% of tickets to human review and auto-labels the rest at 99.7%.
 - **Workstream 2:** 7 support KPIs on **773K NYC 311 requests**, built as dbt models on DuckDB with 10 data tests. Data-quality checks found that **93% of one agency's apparent backlog** was closed requests missing timestamps.
+- **Workstream 3:** A 13-week forecast per agency, chosen by backtesting five methods over 52 weeks (5.5–11% error on quarterly totals), converted to staffing under five scenarios. Planning from the recent run rate would staff **twice** what the seasonal forecast calls for (452 vs 226 FTE under stated handle-time assumptions).
 - **Workstream 4:** **88%** of red-flagged accounts were truly deteriorating (vs a 27% base rate), holding at 80% on an unseen test date. The score did not predict near-term churn, and the write-up explains why.
 
 ### Repository layout
@@ -26,6 +27,7 @@ Each workstream uses the dataset best suited to its question. The datasets descr
 |---|---|
 | `01_llm_ticket_classification.ipynb` | Workstream 1 notebook |
 | `02_support_kpis_sql.ipynb`, `dbt_311/` | Workstream 2 notebook and dbt project (models, seed, tests) |
+| `03_capacity_forecast.ipynb`, `data/volume_daily_311.csv`, `data/ws3_*.csv` | Workstream 3 notebook, daily request counts, forecast and staffing outputs |
 | `04_customer_health_score.ipynb`, `generate_health_data.py`, `data/`, `truth/` | Workstream 4 notebook, data generator, simulated data and hidden labels |
 | `images/` | Charts used in this README |
 
@@ -186,6 +188,101 @@ Similarly, DOHMH Rodent's median of 0.03 days (about 45 minutes) suggests closur
 
 ### Resume bullet
 > Built 7 support-operations KPIs (volume, backlog, median and P90 resolution time, SLA attainment, repeat and duplicate contacts, workload share) on 773K NYC 311 service requests with dbt and DuckDB, using window functions, GROUPING SETS, joins with fallbacks and ROW_NUMBER deduplication, with documented definitions and 10 data tests. Data-quality checks found that 93% of one agency's apparent backlog was closed requests missing timestamps, and that about half of food-safety closures were 60-day administrative auto-closes.
+
+---
+## Workstream 3: Volume forecast and staffing scenarios
+
+**Question:** How many agents will we need next quarter if volume grows as forecast?
+
+**Notebook:** `03_capacity_forecast.ipynb` · **Data:** the same 773,169 NYC 311 requests as Workstream 2, counted per day (`data/volume_daily_311.csv`) and rolled up to 147 complete Monday–Sunday weeks, Jan 1, 2024 to Oct 25, 2026
+
+> **Handle time is assumed.** 311 data records when a request was opened and closed, not how many hours of work it took. The staffing figures below use assumed handle times, so the FTE *levels* are illustrative. The method, the forecast and the percentage comparisons are the result. In a support team, handle time would come from case time tracking.
+
+### Method
+- **Gap handling:** the two DHS reporting-gap weeks found in Workstream 2 (weeks of Feb 2 and Feb 9, 2026: 4 and 175 requests) are set to missing. The models skip them and they are not scored.
+- **Five candidate methods per agency:** same week last year, the last 8 weeks' average, two ARIMA models with Fourier terms for the yearly pattern, and a classic SARIMA with a 52-week season. With under three years of weekly history, SARIMA was not assumed to be the right tool, so it had to win a backtest.
+- **Backtest:** four 13-week forecasts covering the last 52 weeks, each made from earlier data only. The method with the lowest weekly error (WAPE) per agency is used.
+- **Forecast:** 13 weeks from Oct 26, 2026 to Jan 24, 2027, with an 80% prediction interval.
+- **Staffing:** `FTE = weekly volume × handle time ÷ productive hours per FTE`. Productive hours are 40 paid × (1 − 30% shrinkage) × 85% occupancy = **23.8 per week**. Assumed handle time is 1.5 hours per request for DHS, 1.0 for DOHMH and 2.0 for DPR.
+
+### Backtest results (last 52 weeks)
+
+Weekly error (WAPE), with error on the 13-week total in brackets. The winner per agency is in bold.
+
+| Method | DHS | DOHMH | DPR |
+|---|---|---|---|
+| Same week last year | 24.7% (8.5%) | 10.3% (8.4%) | 27.9% (18.8%) |
+| Last 8 weeks' average | 37.5% (35.9%) | 15.8% (16.7%) | 56.6% (58.6%) |
+| ARIMA(1,0,1) + Fourier | 25.3% (9.5%) | **7.6% (5.5%)** | **21.6% (10.8%)** |
+| ARIMA(0,1,1) + Fourier | 24.5% (14.5%) | 8.0% (5.9%) | 21.8% (12.6%) |
+| SARIMA(1,0,0)(0,1,0)52 | **23.8% (7.6%)** | 9.9% (6.6%) | 28.0% (19.4%) |
+
+![Backtest error by method](images/ws3_backtest_wape.png)
+
+- **The recent run rate is the worst predictor everywhere.** Volume is strongly seasonal, so the last 8 weeks say little about the next 13. For DPR the run-rate forecast missed by 57%.
+- **Quarterly totals are far more predictable than single weeks.** The winning methods miss a typical week by 8–24% but the 13-week total by 5.5–11%, because weekly misses partly cancel. Headcount is set on the total.
+- **For DHS, no model clearly beats "same week last year".** Four of the five methods land within 1.5 points of each other. SARIMA is used because it scored lowest, not because it adds much.
+- **DPR was under-forecast by 12.7%** over the backtest year, because 2026 ran above both earlier years. DHS (+3.2%) and DOHMH (−2.0%) show little bias.
+- **The models' own intervals were too narrow.** The winners' 80% intervals contained the actual week only 64–67% of the time. They were replaced with intervals built from each method's backtest errors.
+
+### Forecast (Oct 26, 2026 – Jan 24, 2027)
+
+| | DHS | DOHMH | DPR |
+|---|---|---|---|
+| Method | SARIMA, 52-week season | ARIMA + Fourier | ARIMA + Fourier |
+| Forecast, average week | 778 | 1,384 | 1,411 |
+| 80% interval, average week | 501 – 1,155 | 1,221 – 1,574 | 1,132 – 2,220 |
+| Same 13 weeks a year earlier | 736 | 1,223 | 1,292 |
+| Last 13 weeks (actual) | 1,283 | 1,903 | 3,470 |
+| Forecast vs last 13 weeks | −39% | −27% | −59% |
+
+![Weekly volume and 13-week forecast](images/ws3_forecast.png)
+
+All three agencies peak in summer and early autumn and fall through the winter, so next quarter's volume is forecast well below the quarter just ended, and close to the same weeks a year earlier.
+
+### Staffing scenarios (FTE, average week)
+
+| Scenario | DHS | DOHMH | DPR | All |
+|---|---|---|---|---|
+| Base (median forecast) | 49 | 58 | 119 | 226 |
+| High-demand weeks (upper 80% bound) | 73 | 66 | 187 | 325 |
+| Growth: +15% volume | 56 | 67 | 136 | 260 |
+| Efficiency: handle time −15% | 42 | 49 | 101 | 192 |
+| Stress: +15% volume at upper bound | 84 | 76 | 215 | 374 |
+| *For reference: last 13 weeks' run rate* | *81* | *80* | *292* | *452* |
+
+![Staff needed by scenario](images/ws3_staffing_scenarios.png)
+
+- **Planning from the recent run rate would staff twice what the forecast calls for:** 452 FTE against 226 (−50%). Within each agency the gap (−27% to −59%) is the same whatever handle time is assumed, because it comes from the forecast alone.
+- **The quarter is front-loaded.** The first week (Oct 26) needs 355 FTE across the three agencies and the Christmas week needs 165, against an average of 226. Staffing the average leaves early weeks short.
+- **The buffer costs more where demand is volatile.** Covering high-demand weeks adds 14% at DOHMH but 48% at DHS and 57% at DPR.
+- **Growth without hiring builds a queue quickly.** With headcount fixed at the base plan and 15% more volume, each agency ends the quarter 1.7–1.9 weeks of work behind (1,317 requests at DHS, 2,441 at DOHMH, 2,687 at DPR). At DOHMH, demand exceeds capacity in all 13 weeks.
+
+**Sensitivity, total FTE for an average week:**
+
+| | Handle time −20% | −10% | As assumed | +10% | +20% |
+|---|---|---|---|---|---|
+| Volume as forecast | 181 | 203 | 226 | 248 | 271 |
+| Volume +10% | 199 | 224 | 248 | 273 | 298 |
+| Volume +20% | 217 | 244 | 271 | 298 | 325 |
+| Volume +30% | 235 | 264 | 294 | 323 | 352 |
+
+### Limitations
+- **Handle time, shrinkage and occupancy are assumptions.** FTE scales in direct proportion to each, so a wrong handle time moves every staffing number by the same percentage.
+- **Short history.** There are fewer than three yearly cycles, and the backtest covers one year (four forecasts per agency). The method ranking could change with more data.
+- **The intervals come from 52 backtest errors per agency** and apply the same percentage width to every week. They are a planning range, not a guarantee.
+- **DHS ended the data at record volume** (1,665–1,831 a week in October 2026, against 1,130–1,436 in the same weeks of 2025). The forecast assumes the usual seasonal fall. If the surge is a level shift, the forecast is too low.
+- **Storm spikes are not forecastable.** DPR's largest week (7,354 requests) is far above any upper bound here. Surge capacity needs a separate plan.
+- **Two more DHS weeks are borderline.** The weeks of Feb 16 and Feb 23, 2026 (464 and 269 requests) were kept as real. February is DHS's seasonal low, but they may include part of the reporting gap.
+- **Demand is requests opened,** which includes the duplicates and repeats measured in Workstream 2. Work per request is not adjusted for them.
+- **The "All" column adds three separate teams.** For the upper-bound scenarios it overstates a pooled team's need, since agencies rarely peak in the same week.
+- **The fixed-headcount simulation starts from an empty queue** and ignores the existing backlog from Workstream 2.
+
+### Reproduce
+Run `03_capacity_forecast.ipynb` (about one minute). It reads `data/volume_daily_311.csv`. If that file is missing, it rebuilds it from the Workstream 2 raw files or from three aggregate queries to the 311 API. Outputs: `data/ws3_forecast_weekly.csv`, `data/ws3_staffing_scenarios.csv` and the three charts above.
+
+### Resume bullet
+> Built a 13-week volume forecast and staffing model on 773K NYC 311 requests: backtested five methods over 52 weeks (best weekly error 7.6–24% by agency, 5.5–11% on quarterly totals), replaced model prediction intervals that covered only 64–67% of actuals with backtest-based ones, and converted volume to FTE under five scenarios. Showed that planning from the recent run rate would staff 2× the seasonal forecast (452 vs 226 FTE under stated handle-time assumptions).
 
 ---
 ## Workstream 4: Customer health score
