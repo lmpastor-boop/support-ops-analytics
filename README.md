@@ -192,6 +192,8 @@ Similarly, DOHMH Rodent's median of 0.03 days (about 45 minutes) suggests closur
 ---
 ## Workstream 3: Volume forecast and staffing scenarios
 
+**Dashboard:** [Support Operations: Volume Forecast and Staffing](https://public.tableau.com/app/profile/larry.pastor/viz/SupportOperationsVolumeForecastandStaffing/Dashboard1) (Tableau Public)
+
 **Question:** How many agents will we need next quarter if volume grows as forecast?
 
 **Notebook:** `03_capacity_forecast.ipynb` · **Data:** the same 773,169 NYC 311 requests as Workstream 2, counted per day (`data/volume_daily_311.csv`) and rolled up to 147 complete Monday–Sunday weeks, Jan 1, 2024 to Oct 25, 2026
